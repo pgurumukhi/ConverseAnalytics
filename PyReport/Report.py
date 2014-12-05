@@ -43,7 +43,7 @@ class Report():
                 print req
                 url = req["request"]["url"]
                 if url.startswith(self._COLLECTOR_URL) and imp["pattern"] in url:
-                    params = dict(s.split("=") for s in url.replace("http://collector.bonzai.mobi/rec?", "").split("&"))
+                    params = dict(s.split("=") for s in url.replace(self._COLLECTOR_URL, "").split("&"))
                     break
             if len(params) is 0:
                 imp['result'] = "Not found"
@@ -218,26 +218,42 @@ class Report():
                         with div(cls='right-panel'):
 
                             with div(cls='results'):
-                                h1(span(cls='icon summary-m'))
-                                with div(cls='status'):
-                                    span("Passed", cls='icon ok')
-                                div(dominate.util.unescape(dominate.util.unescape('&')+'nbsp;'), style='height: 20px')
-                                sum_table = table(cls='tbl inner', cellspacing='0', cellpadding='5')
-                                with sum_table.add(tbody()):
-                                    tr1 = tr()
-                                    tr1.add(td('Html File:', width='125px'))
-                                    tr1.add(td('ab.html'))
+                                h1(span(cls='icon summary-m')).add("Test Exec Summary")
+                                with ul(cls='sub-tabs'):
+                                    li('Results', cls='selected')
+                                    li('Debug')
+                                with div(cls='sub-results', style='display:block'):
+                                    with div(cls='status'):
+                                        span("Passed", cls='icon ok')
+                                    div(dominate.util.unescape(dominate.util.unescape('&')+'nbsp;'), style='height: 20px')
+                                    sum_table = table(cls='tbl inner', cellspacing='0', cellpadding='5')
+                                    with sum_table.add(tbody()):
+                                        tr1 = tr()
+                                        tr1.add(td('Html File:', width='125px'))
+                                        tr1.add(td('ab.html'))
 
-                                    tr2 = tr()
-                                    tr2.add(td('Analytics Unique Tracker ID:'))
-                                    tr2.add(td(test['tracker']))
+                                        tr2 = tr()
+                                        tr2.add(td('Analytics Unique Tracker ID:'))
+                                        tr2.add(td(test['tracker']))
 
-                                    tr3 = tr()
-                                    tr3.add(td('# Impresssions found (Expected)'))
-                                    tr3.add(td(str(test['impressions_found'])+"("+str(len(test['expected_impressions']))+")"))
+                                        tr3 = tr()
+                                        tr3.add(td('# Impresssions found (Expected)'))
+                                        tr3.add(td(str(test['impressions_found'])+"("+str(len(test['expected_impressions']))+")"))
+                                with div(cls="sub-results"):
+                                    req_table = table(cls='tbl', cellspacing='0', cellpadding='10', border='0')
+                                    with req_table.add(thead()):
+                                        th("#", width="10%")
+                                        th("Request URL (call)", width="90%")
+                                    with req_table.add(tbody()):
+                                        for m, r in enumerate(test['requests']):
+                                            r1 = tr()
+                                            r1 += td(str(m))
+                                            if r['request']['url'].startswith(self._COLLECTOR_URL):
+                                                r1 += td(span(r['request']['url'], cls="req collector"))
+                                            else:
+                                                r1 += td(span(r['request']['url'], cls="req"))
 
                             for i, imp in enumerate(test['expected_impressions']):
-
                                 with div(cls='results'):
                                     with ul(cls='sub-tabs'):
                                         li('Results', cls='selected')
@@ -248,7 +264,7 @@ class Report():
                                         param_tbl = table(cls='tbl', cellspacing='0', cellpadding='10', border='0')
                                         with param_tbl.add(thead()):
                                             th("#")
-                                            th("name",width="30%")
+                                            th("name", width="30%")
                                             th("expected value", width = "20%")
                                             th("actual value", width= "20%")
                                             th("result")

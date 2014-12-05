@@ -258,6 +258,11 @@ div.results div.status-bar div.sb-right {
 	position: fixed;
 }
 
+span.req.collector {
+	color: rgb(39, 27, 150);
+	background: rgb(249, 249, 168);
+}
+
 #report-iframe{
 	width: 100%;
 	/*height: 100%;*/

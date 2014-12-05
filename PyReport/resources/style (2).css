@@ -464,6 +464,12 @@ span.fav {
 	height: 16px;
 }
 
+span.req.collector {
+	color: rgb(39, 27, 150);
+	background: rgb(249, 249, 168);
+}
+
+
 div.clear {
 	clear: both;	
 }

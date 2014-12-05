@@ -459,6 +459,11 @@ span.summary-m {
 	height: 17px;
 }
 
+span.req.collector {
+	color: rgb(39, 27, 150);
+	background: rgb(249, 249, 168);
+}
+
 span.fav {
 	background: url('images/SeeTestManual.ico') no-repeat;
 	height: 16px;
