@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!--
+Tag generated: 18-11-14 12:04:34
+Campaign: Anaqlytic Test
+Ad Name: Expandable Analytic Ad
+Device: Mobile
+Format: Expandable
+Environment: Mobile Site
+Network: Bonzai
+-->
+<div class='bonzai-wrap'> 
+<script type='text/javascript'>
+(function() {
+var bonzai_adid = 'deda1c6d-0dec-4769-8dbf-fe10fa283df9';
+var bonzai_sn = 'wap_bonzai'; 
+var bonzai_data = '{"network":{"settings":{"env":"wap","tagType":"iFrame","iFrmBust":"N"},"keyId":"GEN","name":"Bonzai","macros":{"clkTr":{"img":["click_tracker"],"scr":[]},"imprTr":{"img":["impression_tracker"],"scr":[]}}}}'; 
+var scripts = document.getElementsByTagName('script'); 
+for(var i = scripts.length-1; i >= 0; i--) { 
+var s = scripts[i]; 
+if(s.innerHTML.indexOf(bonzai_adid) >= 0) { 
+var script = document.createElement('script'); 
+var index = window.bonzaiScriptIndex  = (typeof window.bonzaiScriptIndex == 'undefined') ? 0 : ++window.bonzaiScriptIndex; 
+script.id = 'bonzai_script_' + index; 
+if(!window.bonzaiObj || (typeof window.bonzaiObj == 'undefined')) {window.bonzaiObj = {};} 
+window.bonzaiObj[script.id] = bonzai_data; 
+script.src = (window.location.protocol == 'https:' ? 'https://' : 'http://') + 'invoke.bonzai.mobi:8080/mizu/invoke.do?adid='+bonzai_adid+'&scriptid=' + script.id + '' +'&sn='+bonzai_sn  ; 
+s.parentNode.insertBefore(script, s.nextSibling); 
+break; 
+}}})(this); 
+</script> 
+<noscript> 
+<img src="http://invoke.bonzai.ad/mizu/invoke.do?adid=deda1c6d-0dec-4769-8dbf-fe10fa283df9&sn=wap_bonzai&type=imp" style="display:none;" /> 
+</noscript> 
+</div>
+
+</body>
+</html>
+

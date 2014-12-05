@@ -1,0 +1,60 @@
+{
+  "test_1": {
+    "name": "test_1",
+    "description": "simple analytics page",
+    "file": "ad_thor.html",
+    "expected_impressions": [
+      {
+        "name": "impression",
+        "description": "",
+        "pattern": "evt=imp",
+        "expected_params": [
+          {
+            "name": "current time",
+            "pattern": "cts",
+            "expected_value": "[today]"
+          }
+        ]
+      },
+      {
+        "name": "click impression",
+        "description": "",
+        "pattern": "evt=click",
+        "expected_params": [
+          {
+            "name": "x position",
+            "pattern": "px",
+            "expected_value": "183"
+          },
+          {
+            "name": "y position",
+            "pattern": "py",
+            "expected_value": "25"
+          }
+        ]
+      },
+      {
+        "name": "viewable impression",
+        "description": "",
+        "pattern": "evt=vimp",
+        "expected_params": [
+          {
+            "name": "height",
+            "pattern": "adh",
+            "expected_value": "50"
+          },
+          {
+            "name": "width",
+            "pattern": "adw",
+            "expected_value": "320"
+          },
+          {
+            "name": "current time",
+            "pattern": "cts",
+            "expected_value": "[today]"
+          }
+        ]
+      }
+    ]
+  }
+}
